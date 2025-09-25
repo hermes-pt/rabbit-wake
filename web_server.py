@@ -13,9 +13,9 @@ import asyncio
 import json
 
 # Import the Wake components
-from src.wake.loaders.products import ProductLoader
-from src.wake.loaders.categories import CategoryLoader
-from src.wake.loaders.stock_locations import StockLocationLoader
+from src.wake.loaders.products import ProductsLoader
+from src.wake.loaders.categories import CategoriesLoader
+from src.wake.loaders.stock_locations import StockLocationsLoader
 from src.wake.api.base import WakeAPIClient
 
 app = FastAPI(
@@ -33,23 +33,23 @@ async def health_check():
     return {"status": "healthy", "service": "wake-api"}
 
 @app.get("/products")
-async def get_products(limit: int = 100, offset: int = 0):
+async def get_products(page: int = 1, quantity: int = 50):
     """Get products from Wake API"""
     try:
         async with WakeAPIClient() as client:
-            loader = ProductLoader(client)
-            products = await loader.load_products(limit=limit, offset=offset)
+            loader = ProductsLoader(client)
+            products = await loader.load_products(page=page, quantity=min(quantity, 50))
             return {"products": products, "count": len(products)}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/products/{product_id}")
-async def get_product(product_id: int):
-    """Get a specific product by ID"""
+@app.get("/products/{product_identifier}")
+async def get_product(product_identifier: str):
+    """Get a specific product by SKU or ID"""
     try:
         async with WakeAPIClient() as client:
-            loader = ProductLoader(client)
-            product = await loader.load_product_by_id(product_id)
+            loader = ProductsLoader(client)
+            product = await loader.get_product(product_identifier)
             if not product:
                 raise HTTPException(status_code=404, detail="Product not found")
             return product
@@ -61,42 +61,42 @@ async def get_categories():
     """Get all categories"""
     try:
         async with WakeAPIClient() as client:
-            loader = CategoryLoader(client)
-            categories = await loader.load_all_categories()
+            loader = CategoriesLoader(client)
+            categories = await loader.load_categories()
             return {"categories": categories, "count": len(categories)}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/stock-locations")
-async def get_stock_locations():
-    """Get all stock locations"""
+@app.get("/distribution-centers")
+async def get_distribution_centers():
+    """Get all distribution centers"""
     try:
         async with WakeAPIClient() as client:
-            loader = StockLocationLoader(client)
-            locations = await loader.load_stock_locations()
-            return {"stock_locations": locations, "count": len(locations)}
+            loader = StockLocationsLoader(client)
+            centers = await loader.load_distribution_centers()
+            return {"distribution_centers": centers, "count": len(centers)}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/products/{product_id}/stock")
-async def get_product_stock(product_id: int):
+@app.get("/products/{product_identifier}/stock")
+async def get_product_stock(product_identifier: str):
     """Get stock information for a product"""
     try:
         async with WakeAPIClient() as client:
-            loader = ProductLoader(client)
-            stock = await loader.load_product_stock(product_id)
-            return {"product_id": product_id, "stock": stock}
+            loader = ProductsLoader(client)
+            stock = await loader.load_product_stock(product_identifier)
+            return {"product_identifier": product_identifier, "stock": stock}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/products/{product_id}/prices")
-async def get_product_prices(product_id: int):
+@app.get("/products/{product_identifier}/prices")
+async def get_product_prices(product_identifier: str):
     """Get price information for a product"""
     try:
         async with WakeAPIClient() as client:
-            loader = ProductLoader(client)
-            prices = await loader.load_product_prices(product_id)
-            return {"product_id": product_id, "prices": prices}
+            loader = ProductsLoader(client)
+            prices = await loader.load_product_prices(product_identifier)
+            return {"product_identifier": product_identifier, "prices": prices}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
