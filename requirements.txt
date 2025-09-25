@@ -4,3 +4,5 @@ python-dotenv>=1.1.1
 alembic>=1.16.2
 sqlalchemy>=2.0.41
 rich>=14.0.0
+fastapi>=0.104.0
+uvicorn>=0.24.0
