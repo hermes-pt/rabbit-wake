@@ -1,0 +1,555 @@
+{
+  "name": "Camys",
+  "instructions": null,
+  "fastmcp_version": "2.10.4",
+  "mcp_version": "1.11.0",
+  "server_version": "2.10.4",
+  "tools": [
+    {
+      "key": "search_products",
+      "name": "search_products",
+      "description": "Search for products by name, SKU, or other attributes\n\nArgs:\n    query: Search query (searches in product name, variant name, SKU)\n    limit: Maximum number of results to return (default: 10)\n    include_pricing: Include pricing information in results (default: True)\n    include_out_of_stock: Include products with no stock (default: False - only shows in-stock items)\n    include_images: Include product images from API (default: True)\n\nReturns:\n    List of matching products with details (always includes stock information)",
+      "input_schema": {
+        "properties": {
+          "query": {
+            "title": "Query",
+            "type": "string"
+          },
+          "limit": {
+            "default": 10,
+            "title": "Limit",
+            "type": "integer"
+          },
+          "include_pricing": {
+            "default": true,
+            "title": "Include Pricing",
+            "type": "boolean"
+          },
+          "include_out_of_stock": {
+            "default": false,
+            "title": "Include Out Of Stock",
+            "type": "boolean"
+          },
+          "include_images": {
+            "default": true,
+            "title": "Include Images",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "type": "object"
+      },
+      "annotations": null,
+      "tags": null,
+      "enabled": true
+    },
+    {
+      "key": "get_related_products",
+      "name": "get_related_products",
+      "description": "Get related products for a given product ID\n\nArgs:\n    product_id: The product ID to find related products for\n    limit: Maximum number of related products to return (default: 10)\n\nReturns:\n    List of related products with details",
+      "input_schema": {
+        "properties": {
+          "product_id": {
+            "title": "Product Id",
+            "type": "integer"
+          },
+          "limit": {
+            "default": 10,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "product_id"
+        ],
+        "type": "object"
+      },
+      "annotations": null,
+      "tags": null,
+      "enabled": true
+    },
+    {
+      "key": "simple_login_start",
+      "name": "simple_login_start",
+      "description": "Start simple login process for a customer\n\nArgs:\n    email: Customer email address\n\nReturns:\n    Dict with login type and security question if existing user,\n    or registration token if new user",
+      "input_schema": {
+        "properties": {
+          "email": {
+            "title": "Email",
+            "type": "string"
+          }
+        },
+        "required": [
+          "email"
+        ],
+        "type": "object"
+      },
+      "annotations": null,
+      "tags": null,
+      "enabled": true
+    },
+    {
+      "key": "simple_login_verify",
+      "name": "simple_login_verify",
+      "description": "Verify security question answer and get customer access token\n\nArgs:\n    email: Customer email address\n    question_id: ID of the security question\n    answer_id: ID of the selected answer\n\nReturns:\n    Dict with login result and token if successful",
+      "input_schema": {
+        "properties": {
+          "email": {
+            "title": "Email",
+            "type": "string"
+          },
+          "question_id": {
+            "title": "Question Id",
+            "type": "string"
+          },
+          "answer_id": {
+            "title": "Answer Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "question_id",
+          "answer_id"
+        ],
+        "type": "object"
+      },
+      "annotations": null,
+      "tags": null,
+      "enabled": true
+    },
+    {
+      "key": "create_checkout",
+      "name": "create_checkout",
+      "description": "Create a new checkout session\n\nArgs:\n    product_variant_ids: Comma-separated list of product variant IDs (e.g., \"265682,265683\")\n    quantities: Comma-separated list of quantities (e.g., \"2,1\")\n\nReturns:\n    Checkout object with checkoutId, total, subtotal, and products",
+      "input_schema": {
+        "properties": {
+          "product_variant_ids": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Product Variant Ids"
+          },
+          "quantities": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Quantities"
+          }
+        },
+        "type": "object"
+      },
+      "annotations": null,
+      "tags": null,
+      "enabled": true
+    },
+    {
+      "key": "add_to_checkout",
+      "name": "add_to_checkout",
+      "description": "Add products to an existing checkout\n\nArgs:\n    checkout_id: UUID of the checkout\n    product_variant_id: ID of the product variant to add\n    quantity: Number of items to add\n\nReturns:\n    Updated checkout object",
+      "input_schema": {
+        "properties": {
+          "checkout_id": {
+            "title": "Checkout Id",
+            "type": "string"
+          },
+          "product_variant_id": {
+            "title": "Product Variant Id",
+            "type": "string"
+          },
+          "quantity": {
+            "default": 1,
+            "title": "Quantity",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "checkout_id",
+          "product_variant_id"
+        ],
+        "type": "object"
+      },
+      "annotations": null,
+      "tags": null,
+      "enabled": true
+    },
+    {
+      "key": "update_checkout_product",
+      "name": "update_checkout_product",
+      "description": "Update product quantity in checkout\n\nNOTE: This mutation appears to succeed but doesn't actually update the quantity.\nUse remove_from_checkout and create_checkout instead.\n\nArgs:\n    checkout_id: UUID of the checkout\n    product_variant_id: ID of the product variant\n    quantity: New quantity (0 to remove)\n\nReturns:\n    Updated checkout object",
+      "input_schema": {
+        "properties": {
+          "checkout_id": {
+            "title": "Checkout Id",
+            "type": "string"
+          },
+          "product_variant_id": {
+            "title": "Product Variant Id",
+            "type": "string"
+          },
+          "quantity": {
+            "title": "Quantity",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "checkout_id",
+          "product_variant_id",
+          "quantity"
+        ],
+        "type": "object"
+      },
+      "annotations": null,
+      "tags": null,
+      "enabled": true
+    },
+    {
+      "key": "remove_from_checkout",
+      "name": "remove_from_checkout",
+      "description": "Remove products from checkout\n\nArgs:\n    checkout_id: UUID of the checkout\n    product_variant_id: ID of the product variant\n    quantity: Number to remove (None = remove all)\n\nReturns:\n    Updated checkout object",
+      "input_schema": {
+        "properties": {
+          "checkout_id": {
+            "title": "Checkout Id",
+            "type": "string"
+          },
+          "product_variant_id": {
+            "title": "Product Variant Id",
+            "type": "string"
+          },
+          "quantity": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Quantity"
+          }
+        },
+        "required": [
+          "checkout_id",
+          "product_variant_id"
+        ],
+        "type": "object"
+      },
+      "annotations": null,
+      "tags": null,
+      "enabled": true
+    },
+    {
+      "key": "get_checkout",
+      "name": "get_checkout",
+      "description": "Get detailed checkout information\n\nArgs:\n    checkout_id: UUID of the checkout\n    include_available_shipping: Include shipping options\n    include_available_payments: Include payment methods\n\nReturns:\n    Complete checkout object with all details",
+      "input_schema": {
+        "properties": {
+          "checkout_id": {
+            "title": "Checkout Id",
+            "type": "string"
+          },
+          "include_available_shipping": {
+            "default": false,
+            "title": "Include Available Shipping",
+            "type": "boolean"
+          },
+          "include_available_payments": {
+            "default": false,
+            "title": "Include Available Payments",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "checkout_id"
+        ],
+        "type": "object"
+      },
+      "annotations": null,
+      "tags": null,
+      "enabled": true
+    },
+    {
+      "key": "associate_customer",
+      "name": "associate_customer",
+      "description": "Associate customer account with checkout using environment token\n\nArgs:\n    checkout_id: UUID of the checkout\n\nReturns:\n    Updated checkout with customer information",
+      "input_schema": {
+        "properties": {
+          "checkout_id": {
+            "title": "Checkout Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "checkout_id"
+        ],
+        "type": "object"
+      },
+      "annotations": null,
+      "tags": null,
+      "enabled": true
+    },
+    {
+      "key": "set_checkout_address",
+      "name": "set_checkout_address",
+      "description": "Set delivery address for checkout\n\nArgs:\n    checkout_id: UUID of the checkout\n    address_id: ID of customer's saved address\n\nReturns:\n    Updated checkout with selected address",
+      "input_schema": {
+        "properties": {
+          "checkout_id": {
+            "title": "Checkout Id",
+            "type": "string"
+          },
+          "address_id": {
+            "title": "Address Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "checkout_id",
+          "address_id"
+        ],
+        "type": "object"
+      },
+      "annotations": null,
+      "tags": null,
+      "enabled": true
+    },
+    {
+      "key": "get_shipping_quotes",
+      "name": "get_shipping_quotes",
+      "description": "Get available shipping quotes for checkout\n\nArgs:\n    checkout_id: UUID of the checkout\n\nReturns:\n    List of shipping options",
+      "input_schema": {
+        "properties": {
+          "checkout_id": {
+            "title": "Checkout Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "checkout_id"
+        ],
+        "type": "object"
+      },
+      "annotations": null,
+      "tags": null,
+      "enabled": true
+    },
+    {
+      "key": "select_shipping",
+      "name": "select_shipping",
+      "description": "Select shipping method for checkout\n\nArgs:\n    checkout_id: UUID of the checkout\n    shipping_quote_id: ID from get_shipping_quotes\n    delivery_schedule_id: Optional scheduled delivery\n\nReturns:\n    Updated checkout with shipping selected",
+      "input_schema": {
+        "properties": {
+          "checkout_id": {
+            "title": "Checkout Id",
+            "type": "string"
+          },
+          "shipping_quote_id": {
+            "title": "Shipping Quote Id",
+            "type": "string"
+          },
+          "delivery_schedule_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Delivery Schedule Id"
+          }
+        },
+        "required": [
+          "checkout_id",
+          "shipping_quote_id"
+        ],
+        "type": "object"
+      },
+      "annotations": null,
+      "tags": null,
+      "enabled": true
+    },
+    {
+      "key": "get_payment_methods",
+      "name": "get_payment_methods",
+      "description": "Get available payment methods\n\nArgs:\n    checkout_id: UUID of the checkout\n\nReturns:\n    List of payment methods with installment options",
+      "input_schema": {
+        "properties": {
+          "checkout_id": {
+            "title": "Checkout Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "checkout_id"
+        ],
+        "type": "object"
+      },
+      "annotations": null,
+      "tags": null,
+      "enabled": true
+    },
+    {
+      "key": "select_payment",
+      "name": "select_payment",
+      "description": "Select payment method and installments\n\nArgs:\n    checkout_id: UUID of the checkout\n    payment_method_id: ID from get_payment_methods\n    installment_number: Number of installments\n\nReturns:\n    Updated checkout with payment selected",
+      "input_schema": {
+        "properties": {
+          "checkout_id": {
+            "title": "Checkout Id",
+            "type": "string"
+          },
+          "payment_method_id": {
+            "title": "Payment Method Id",
+            "type": "string"
+          },
+          "installment_number": {
+            "default": 1,
+            "title": "Installment Number",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "checkout_id",
+          "payment_method_id"
+        ],
+        "type": "object"
+      },
+      "annotations": null,
+      "tags": null,
+      "enabled": true
+    },
+    {
+      "key": "apply_coupon",
+      "name": "apply_coupon",
+      "description": "Apply discount coupon to checkout\n\nArgs:\n    checkout_id: UUID of the checkout\n    coupon_code: Discount code\n\nReturns:\n    Updated checkout with coupon applied",
+      "input_schema": {
+        "properties": {
+          "checkout_id": {
+            "title": "Checkout Id",
+            "type": "string"
+          },
+          "coupon_code": {
+            "title": "Coupon Code",
+            "type": "string"
+          }
+        },
+        "required": [
+          "checkout_id",
+          "coupon_code"
+        ],
+        "type": "object"
+      },
+      "annotations": null,
+      "tags": null,
+      "enabled": true
+    },
+    {
+      "key": "remove_coupon",
+      "name": "remove_coupon",
+      "description": "Remove discount coupon from checkout\n\nArgs:\n    checkout_id: UUID of the checkout\n    coupon_code: Coupon to remove\n\nReturns:\n    Updated checkout without coupon",
+      "input_schema": {
+        "properties": {
+          "checkout_id": {
+            "title": "Checkout Id",
+            "type": "string"
+          },
+          "coupon_code": {
+            "title": "Coupon Code",
+            "type": "string"
+          }
+        },
+        "required": [
+          "checkout_id",
+          "coupon_code"
+        ],
+        "type": "object"
+      },
+      "annotations": null,
+      "tags": null,
+      "enabled": true
+    },
+    {
+      "key": "list_customer_addresses",
+      "name": "list_customer_addresses",
+      "description": "Lista os endereços salvos do cliente\n\nReturns:\n    Lista de endereços do cliente",
+      "input_schema": {
+        "properties": {},
+        "type": "object"
+      },
+      "annotations": null,
+      "tags": null,
+      "enabled": true
+    },
+    {
+      "key": "complete_checkout",
+      "name": "complete_checkout",
+      "description": "Complete checkout and create order\n\nArgs:\n    checkout_id: UUID of the checkout\n    payment_data: Payment information (format depends on payment method)\n                 - For PIX: \"\" (empty string)\n                 - For Boleto: \"cpf=12345678900&telefone=11999999999\"\n                 - For Credit Card: full card details\n    comments: Order comments/notes\n\nReturns:\n    Completion result with order details",
+      "input_schema": {
+        "properties": {
+          "checkout_id": {
+            "title": "Checkout Id",
+            "type": "string"
+          },
+          "payment_data": {
+            "title": "Payment Data",
+            "type": "string"
+          },
+          "comments": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Comments"
+          }
+        },
+        "required": [
+          "checkout_id",
+          "payment_data"
+        ],
+        "type": "object"
+      },
+      "annotations": null,
+      "tags": null,
+      "enabled": true
+    }
+  ],
+  "prompts": [],
+  "resources": [],
+  "templates": [],
+  "capabilities": {
+    "tools": {
+      "listChanged": true
+    },
+    "resources": {
+      "subscribe": false,
+      "listChanged": false
+    },
+    "prompts": {
+      "listChanged": false
+    },
+    "logging": {}
+  }
+}

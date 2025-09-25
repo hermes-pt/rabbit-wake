@@ -1,0 +1,44 @@
+# WhatsApp Business API Configuration
+WEBHOOK_VERIFY_TOKEN=f47ac10b-58cc-4372-a567-0e02b2c3d479
+PORT=3001
+
+# Meta/Facebook App Configuration
+WHATSAPP_TOKEN=EAAJ9t32NWvUBPrSDHtYzWR9RFCvC4lIrlyxFc8Tf3PQ6YyCZA8m7eTqtMsyEh0VGMh0JennWiqp7ZAcl6ROf0VVjII1fR5QSUEuDUfblVT9ZAjfzKYOKpZA4TZByja0fVjwDIviZCtoq4SpebA5cDzEzQx6fJREQg4ZCyOwtLHZBc3jDXyQq89fkb3HRYMJqtYN7KR6iWANmbAhiZAd8cZAYVPqj2uhyCDZAdMgGGPyEG8F39WSeAZDZD
+WHATSAPP_PHONE_NUMBER_ID=754517177740448
+WHATSAPP_BUSINESS_ACCOUNT_ID=1111022044316010
+
+# Gemini AI Configuration (replaced Claude)
+
+# Logging
+LOG_LEVEL=DEBUG
+
+# RabbitMQ. Configuration
+RABBITMQ_URL=amqp://admin:admin123@localhost:5672/whatsapp
+
+# Redis Configuration  
+REDIS_URL=redis://:redis123@localhost:6379
+
+# Database Configuration
+DATABASE_URL=file:./conversations.db
+
+# Wake E-commerce API Configuration
+  WAKE_API_BASE_URL=https://api.fbits.net
+  WAKE_API_TOKEN=camys-6236b35c-0794-4657-9e65-9c6f310e64ad
+
+  # Wake Admin Credentials (para vendas assistidas)
+  ADMIN_EMAIL=thiago.freire@gmail.com
+  ADMIN_PASSWORD=Applelisa@83
+
+  # Customer Phone (seu número para testes)
+  CUSTOMER_PHONE=5511930800121
+
+  # Wake Storefront GraphQL API Configuration
+STOREFRONT_API_BASE_URL=https://storefront-api.fbits.net
+STOREFRONT_API_TOKEN=tcs_camys_a4155a60d97644bd9a9c2404ba632c09
+
+# Gemini AI Configuration
+GEMINI_API_KEY=AIzaSyCblTxy_C5zPCmvpCJzzVIyK8c9Qji5EaM
+GEMINI_MODEL=gemini-1.5-flash
+GEMINI_MAX_HISTORY=10
+# Optional: Custom system prompt for Gemini
+# GEMINI_SYSTEM_PROMPT=

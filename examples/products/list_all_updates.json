@@ -1,0 +1,1198 @@
+[
+    {
+        "produtoId": 70738,
+        "produtoVarianteId": 261408,
+        "sku": "126010",
+        "precoDe": 86,
+        "precoPor": 25.8,
+        "disponivel": true,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 12,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 70751,
+        "produtoVarianteId": 261493,
+        "sku": "127628",
+        "precoDe": 226,
+        "precoPor": 113,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 70751,
+        "produtoVarianteId": 261494,
+        "sku": "127627",
+        "precoDe": 226,
+        "precoPor": 113,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 70751,
+        "produtoVarianteId": 261495,
+        "sku": "127626",
+        "precoDe": 226,
+        "precoPor": 113,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 70751,
+        "produtoVarianteId": 261496,
+        "sku": "127629",
+        "precoDe": 226,
+        "precoPor": 113,
+        "disponivel": true,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 42,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 70751,
+        "produtoVarianteId": 261497,
+        "sku": "127625",
+        "precoDe": 226,
+        "precoPor": 113,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 70751,
+        "produtoVarianteId": 261498,
+        "sku": "127630",
+        "precoDe": 226,
+        "precoPor": 113,
+        "disponivel": true,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 16,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 70751,
+        "produtoVarianteId": 261499,
+        "sku": "127631",
+        "precoDe": 226,
+        "precoPor": 113,
+        "disponivel": true,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 14,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 70867,
+        "produtoVarianteId": 262278,
+        "sku": "125730",
+        "precoDe": 296,
+        "precoPor": 88.8,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": false,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 70867,
+        "produtoVarianteId": 262279,
+        "sku": "125729",
+        "precoDe": 296,
+        "precoPor": 88.8,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": false,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 70867,
+        "produtoVarianteId": 262280,
+        "sku": "125728",
+        "precoDe": 296,
+        "precoPor": 88.8,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": false,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 70867,
+        "produtoVarianteId": 262281,
+        "sku": "125731",
+        "precoDe": 296,
+        "precoPor": 88.8,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": false,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 70867,
+        "produtoVarianteId": 262282,
+        "sku": "125727",
+        "precoDe": 296,
+        "precoPor": 88.8,
+        "disponivel": true,
+        "valido": true,
+        "exibirSite": false,
+        "estoque": [
+            {
+                "estoqueFisico": 1,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 70867,
+        "produtoVarianteId": 262283,
+        "sku": "125732",
+        "precoDe": 296,
+        "precoPor": 88.8,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": false,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 70867,
+        "produtoVarianteId": 262284,
+        "sku": "125733",
+        "precoDe": 296,
+        "precoPor": 88.8,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": false,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 70904,
+        "produtoVarianteId": 262537,
+        "sku": "129959",
+        "precoDe": 226,
+        "precoPor": 67.8,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 70904,
+        "produtoVarianteId": 262538,
+        "sku": "129958",
+        "precoDe": 226,
+        "precoPor": 67.8,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 70904,
+        "produtoVarianteId": 262539,
+        "sku": "129957",
+        "precoDe": 226,
+        "precoPor": 67.8,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 70904,
+        "produtoVarianteId": 262540,
+        "sku": "129960",
+        "precoDe": 226,
+        "precoPor": 67.8,
+        "disponivel": true,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 13,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 70904,
+        "produtoVarianteId": 262541,
+        "sku": "129956",
+        "precoDe": 226,
+        "precoPor": 67.8,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 70904,
+        "produtoVarianteId": 262542,
+        "sku": "129961",
+        "precoDe": 226,
+        "precoPor": 67.8,
+        "disponivel": true,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 4,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 70904,
+        "produtoVarianteId": 262543,
+        "sku": "129962",
+        "precoDe": 226,
+        "precoPor": 67.8,
+        "disponivel": true,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 6,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71009,
+        "produtoVarianteId": 263228,
+        "sku": "132822",
+        "precoDe": 456,
+        "precoPor": 274,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": false,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71009,
+        "produtoVarianteId": 263229,
+        "sku": "132821",
+        "precoDe": 456,
+        "precoPor": 274,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": false,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71009,
+        "produtoVarianteId": 263230,
+        "sku": "132820",
+        "precoDe": 456,
+        "precoPor": 274,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": false,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71009,
+        "produtoVarianteId": 263231,
+        "sku": "132823",
+        "precoDe": 456,
+        "precoPor": 274,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": false,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71009,
+        "produtoVarianteId": 263232,
+        "sku": "132819",
+        "precoDe": 456,
+        "precoPor": 274,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": false,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71009,
+        "produtoVarianteId": 263233,
+        "sku": "132824",
+        "precoDe": 456,
+        "precoPor": 274,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": false,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71009,
+        "produtoVarianteId": 263234,
+        "sku": "132825",
+        "precoDe": 456,
+        "precoPor": 274,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": false,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71055,
+        "produtoVarianteId": 263533,
+        "sku": "134270",
+        "precoDe": 646,
+        "precoPor": 193.8,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": false,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71055,
+        "produtoVarianteId": 263534,
+        "sku": "134269",
+        "precoDe": 646,
+        "precoPor": 193.8,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": false,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71055,
+        "produtoVarianteId": 263535,
+        "sku": "134268",
+        "precoDe": 646,
+        "precoPor": 193.8,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": false,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71055,
+        "produtoVarianteId": 263536,
+        "sku": "134267",
+        "precoDe": 646,
+        "precoPor": 193.8,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": false,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71149,
+        "produtoVarianteId": 264148,
+        "sku": "136481",
+        "precoDe": 576,
+        "precoPor": 576,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71149,
+        "produtoVarianteId": 264149,
+        "sku": "136482",
+        "precoDe": 576,
+        "precoPor": 576,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71149,
+        "produtoVarianteId": 264150,
+        "sku": "136478",
+        "precoDe": 576,
+        "precoPor": 576,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71149,
+        "produtoVarianteId": 264151,
+        "sku": "136483",
+        "precoDe": 576,
+        "precoPor": 576,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71149,
+        "produtoVarianteId": 264152,
+        "sku": "136479",
+        "precoDe": 576,
+        "precoPor": 576,
+        "disponivel": true,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 1,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71149,
+        "produtoVarianteId": 264153,
+        "sku": "136484",
+        "precoDe": 576,
+        "precoPor": 576,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71149,
+        "produtoVarianteId": 264154,
+        "sku": "136480",
+        "precoDe": 576,
+        "precoPor": 576,
+        "disponivel": true,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 1,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71149,
+        "produtoVarianteId": 264155,
+        "sku": "136485",
+        "precoDe": 576,
+        "precoPor": 576,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            },
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 32,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71201,
+        "produtoVarianteId": 264494,
+        "sku": "136985",
+        "precoDe": 1656,
+        "precoPor": 1656,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71201,
+        "produtoVarianteId": 264495,
+        "sku": "136984",
+        "precoDe": 1656,
+        "precoPor": 1656,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71201,
+        "produtoVarianteId": 264496,
+        "sku": "136983",
+        "precoDe": 1656,
+        "precoPor": 1656,
+        "disponivel": true,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 2,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71201,
+        "produtoVarianteId": 264497,
+        "sku": "136986",
+        "precoDe": 1656,
+        "precoPor": 1656,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71201,
+        "produtoVarianteId": 264498,
+        "sku": "136982",
+        "precoDe": 1656,
+        "precoPor": 1656,
+        "disponivel": true,
+        "valido": true,
+        "exibirSite": true,
+        "estoque": [
+            {
+                "estoqueFisico": 3,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71216,
+        "produtoVarianteId": 264590,
+        "sku": "133891",
+        "precoDe": 556,
+        "precoPor": 166.8,
+        "disponivel": true,
+        "valido": true,
+        "exibirSite": false,
+        "estoque": [
+            {
+                "estoqueFisico": 1,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71216,
+        "produtoVarianteId": 264591,
+        "sku": "133892",
+        "precoDe": 556,
+        "precoPor": 166.8,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": false,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71216,
+        "produtoVarianteId": 264592,
+        "sku": "133888",
+        "precoDe": 556,
+        "precoPor": 166.8,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": false,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    },
+    {
+        "produtoId": 71216,
+        "produtoVarianteId": 264593,
+        "sku": "133893",
+        "precoDe": 556,
+        "precoPor": 166.8,
+        "disponivel": false,
+        "valido": true,
+        "exibirSite": false,
+        "estoque": [
+            {
+                "estoqueFisico": 0,
+                "estoqueReservado": 0,
+                "centroDistribuicaoId": 25,
+                "alertaEstoque": 0
+            }
+        ],
+        "tabelasPreco": []
+    }
+]

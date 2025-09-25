@@ -1,0 +1,12 @@
+{
+    "estoqueFisico": 6,
+    "estoqueReservado": 0,
+    "listProdutoVarianteCentroDistribuicaoEstoque": [
+        {
+            "centroDistribuicaoId": 25,
+            "nome": "CD Padrão",
+            "estoqueFisico": 6,
+            "estoqueReservado": 0
+        }
+    ]
+}

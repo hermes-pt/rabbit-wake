@@ -1,0 +1,480 @@
+#!/usr/bin/env python3
+"""
+GraphQL Schema CLI Tool
+Navigate Wake Storefront GraphQL schema via command line
+"""
+
+import json
+import sys
+import argparse
+from typing import Dict, List, Optional, Any
+from pathlib import Path
+
+
+class SchemaExplorer:
+    def __init__(self, schema_path: str = "docs/storefront/storefront_schema.json"):
+        self.schema_path = Path(schema_path)
+        self.schema = None
+        self.types_by_name = {}
+        self._load_schema()
+    
+    def _load_schema(self):
+        """Load schema from file"""
+        if not self.schema_path.exists():
+            print(f"Error: Schema file not found at {self.schema_path}", file=sys.stderr)
+            sys.exit(1)
+        
+        with open(self.schema_path, 'r') as f:
+            data = json.load(f)
+            self.schema = data['__schema']
+            
+            # Build type lookup
+            for type_def in self.schema['types']:
+                self.types_by_name[type_def['name']] = type_def
+    
+    def format_type(self, type_ref: Dict) -> str:
+        """Format a type reference"""
+        if not type_ref:
+            return "Unknown"
+        
+        if type_ref["kind"] == "NON_NULL":
+            return f"{self.format_type(type_ref['ofType'])}!"
+        elif type_ref["kind"] == "LIST":
+            return f"[{self.format_type(type_ref['ofType'])}]"
+        else:
+            return type_ref.get("name", "Unknown")
+    
+    def get_base_type(self, type_ref: Dict) -> Optional[str]:
+        """Get base type name"""
+        if not type_ref:
+            return None
+        
+        if type_ref["kind"] in ["NON_NULL", "LIST"]:
+            return self.get_base_type(type_ref.get('ofType'))
+        return type_ref.get('name')
+    
+    def list_queries(self, pattern: Optional[str] = None, show_args: bool = False):
+        """List all queries"""
+        query_type = self.types_by_name.get(self.schema['queryType']['name'])
+        if not query_type or not query_type.get('fields'):
+            return
+        
+        fields = query_type['fields']
+        if pattern:
+            fields = [f for f in fields if pattern.lower() in f['name'].lower()]
+        
+        for field in sorted(fields, key=lambda x: x['name']):
+            print(f"\n{field['name']}")
+            
+            if field.get('description'):
+                print(f"  {field['description']}")
+            
+            if show_args and field.get('args'):
+                print("  Args:")
+                for arg in field['args']:
+                    arg_type = self.format_type(arg['type'])
+                    required = "!" in arg_type
+                    print(f"    - {arg['name']}: {arg_type} {'(required)' if required else ''}")
+            
+            return_type = self.format_type(field['type'])
+            print(f"  Returns: {return_type}")
+    
+    def list_mutations(self, pattern: Optional[str] = None, show_args: bool = False):
+        """List all mutations"""
+        if not self.schema.get('mutationType'):
+            print("No mutations available")
+            return
+        
+        mutation_type = self.types_by_name.get(self.schema['mutationType']['name'])
+        if not mutation_type or not mutation_type.get('fields'):
+            return
+        
+        fields = mutation_type['fields']
+        if pattern:
+            fields = [f for f in fields if pattern.lower() in f['name'].lower()]
+        
+        for field in sorted(fields, key=lambda x: x['name']):
+            print(f"\n{field['name']}")
+            
+            if field.get('description'):
+                print(f"  {field['description']}")
+            
+            if show_args and field.get('args'):
+                print("  Args:")
+                for arg in field['args']:
+                    arg_type = self.format_type(arg['type'])
+                    required = "!" in arg_type
+                    print(f"    - {arg['name']}: {arg_type} {'(required)' if required else ''}")
+            
+            return_type = self.format_type(field['type'])
+            print(f"  Returns: {return_type}")
+    
+    def list_types(self, kind: Optional[str] = None, pattern: Optional[str] = None):
+        """List types by kind"""
+        types = []
+        
+        for name, type_def in self.types_by_name.items():
+            if name.startswith('__'):
+                continue
+            
+            if kind and type_def['kind'] != kind.upper():
+                continue
+            
+            if pattern and pattern.lower() not in name.lower():
+                continue
+            
+            types.append((name, type_def))
+        
+        for name, type_def in sorted(types):
+            print(f"{name} ({type_def['kind']})")
+            if type_def.get('description'):
+                print(f"  {type_def['description']}")
+    
+    def show_type(self, type_name: str, show_all: bool = False):
+        """Show details of a specific type"""
+        type_def = self.types_by_name.get(type_name)
+        if not type_def:
+            print(f"Type '{type_name}' not found", file=sys.stderr)
+            sys.exit(1)
+        
+        print(f"\n{type_name} ({type_def['kind']})")
+        if type_def.get('description'):
+            print(f"  {type_def['description']}")
+        print()
+        
+        # Object fields
+        if type_def['kind'] == 'OBJECT' and type_def.get('fields'):
+            print("Fields:")
+            fields = type_def['fields']
+            
+            if not show_all and len(fields) > 20:
+                fields = fields[:20]
+                print(f"  (Showing first 20 of {len(type_def['fields'])} fields. Use --all to see all)")
+            
+            for field in fields:
+                field_type = self.format_type(field['type'])
+                print(f"  {field['name']}: {field_type}")
+                if field.get('description'):
+                    print(f"    {field['description']}")
+        
+        # Enum values
+        elif type_def['kind'] == 'ENUM' and type_def.get('enumValues'):
+            print("Values:")
+            for value in type_def['enumValues']:
+                print(f"  - {value['name']}")
+                if value.get('description'):
+                    print(f"    {value['description']}")
+        
+        # Input fields
+        elif type_def['kind'] == 'INPUT_OBJECT' and type_def.get('inputFields'):
+            print("Input Fields:")
+            for field in type_def['inputFields']:
+                field_type = self.format_type(field['type'])
+                required = "!" in field_type
+                print(f"  {field['name']}: {field_type} {'(required)' if required else ''}")
+                if field.get('description'):
+                    print(f"    {field['description']}")
+    
+    def search(self, term: str, in_types: bool = True, in_fields: bool = True, 
+               in_descriptions: bool = False):
+        """Search across schema"""
+        results = []
+        term_lower = term.lower()
+        
+        for name, type_def in self.types_by_name.items():
+            if name.startswith('__'):
+                continue
+            
+            # Search in type names
+            if in_types and term_lower in name.lower():
+                results.append(('type', name, type_def.get('description', '')))
+            
+            # Search in descriptions
+            if in_descriptions and type_def.get('description'):
+                if term_lower in type_def['description'].lower():
+                    results.append(('type', name, type_def['description']))
+            
+            # Search in fields
+            if in_fields and type_def.get('fields'):
+                for field in type_def['fields']:
+                    if term_lower in field['name'].lower():
+                        desc = f"{name}.{field['name']}: {self.format_type(field['type'])}"
+                        results.append(('field', f"{name}.{field['name']}", desc))
+                    
+                    if in_descriptions and field.get('description'):
+                        if term_lower in field['description'].lower():
+                            desc = f"{field['description'][:60]}..."
+                            results.append(('field', f"{name}.{field['name']}", desc))
+        
+        # Display results
+        if not results:
+            print(f"No results found for '{term}'")
+        else:
+            print(f"Found {len(results)} results for '{term}':\n")
+            
+            # Group by type
+            type_results = [r for r in results if r[0] == 'type']
+            field_results = [r for r in results if r[0] == 'field']
+            
+            if type_results:
+                print("Types:")
+                for _, name, desc in type_results[:10]:
+                    print(f"  {name}")
+                    if desc:
+                        print(f"    {desc[:80]}...")
+                if len(type_results) > 10:
+                    print(f"  ... and {len(type_results) - 10} more types")
+                print()
+            
+            if field_results:
+                print("Fields:")
+                for _, name, desc in field_results[:15]:
+                    print(f"  {name}")
+                    if desc:
+                        print(f"    {desc}")
+                if len(field_results) > 15:
+                    print(f"  ... and {len(field_results) - 15} more fields")
+    
+    def show_field(self, field_path: str):
+        """Show details of a specific field (format: Type.field)"""
+        parts = field_path.split('.')
+        if len(parts) != 2:
+            print("Error: Field path should be in format 'Type.field'", file=sys.stderr)
+            sys.exit(1)
+        
+        type_name, field_name = parts
+        type_def = self.types_by_name.get(type_name)
+        
+        if not type_def:
+            print(f"Type '{type_name}' not found", file=sys.stderr)
+            sys.exit(1)
+        
+        if not type_def.get('fields'):
+            print(f"Type '{type_name}' has no fields", file=sys.stderr)
+            sys.exit(1)
+        
+        field = next((f for f in type_def['fields'] if f['name'] == field_name), None)
+        if not field:
+            print(f"Field '{field_name}' not found in type '{type_name}'", file=sys.stderr)
+            sys.exit(1)
+        
+        print(f"\n{type_name}.{field['name']}")
+        if field.get('description'):
+            print(f"  {field['description']}")
+        
+        print(f"\n  Type: {self.format_type(field['type'])}")
+        
+        if field.get('args'):
+            print("\n  Arguments:")
+            for arg in field['args']:
+                arg_type = self.format_type(arg['type'])
+                required = "!" in arg_type
+                print(f"    {arg['name']}: {arg_type} {'(required)' if required else ''}")
+                if arg.get('description'):
+                    print(f"      {arg['description']}")
+    
+    def generate_query(self, query_name: str, depth: int = 2):
+        """Generate a sample query for a given query name"""
+        query_type = self.types_by_name.get(self.schema['queryType']['name'])
+        if not query_type:
+            return
+        
+        query_field = next((f for f in query_type.get('fields', []) 
+                           if f['name'] == query_name), None)
+        if not query_field:
+            print(f"Query '{query_name}' not found", file=sys.stderr)
+            sys.exit(1)
+        
+        print(f"# Sample query for {query_name}")
+        print("query {")
+        
+        # Build query with args
+        args = []
+        if query_field.get('args'):
+            for arg in query_field['args']:
+                arg_type = self.format_type(arg['type'])
+                if "!" in arg_type:  # Required
+                    # Provide example values
+                    if "String" in arg_type:
+                        args.append(f'{arg["name"]}: "example"')
+                    elif "Int" in arg_type or "Long" in arg_type:
+                        args.append(f'{arg["name"]}: 123')
+                    elif "Boolean" in arg_type:
+                        args.append(f'{arg["name"]}: true')
+                    elif "Float" in arg_type:
+                        args.append(f'{arg["name"]}: 1.23')
+                    else:
+                        args.append(f'{arg["name"]}: <{arg_type}>')
+        
+        if args:
+            print(f'  {query_name}({", ".join(args)}) {{')
+        else:
+            print(f'  {query_name} {{')
+        
+        # Get return type and generate fields
+        return_type = self.get_base_type(query_field['type'])
+        self._generate_selection(return_type, depth, indent=4)
+        
+        print("  }")
+        print("}")
+    
+    def _generate_selection(self, type_name: str, depth: int, indent: int):
+        """Generate field selection for a type"""
+        if depth <= 0 or not type_name:
+            return
+        
+        type_def = self.types_by_name.get(type_name)
+        if not type_def or not type_def.get('fields'):
+            return
+        
+        # Special handling for connection types
+        if type_name.endswith('Connection'):
+            # Always include edges, nodes, and pageInfo for connections
+            print(" " * indent + "edges {")
+            print(" " * (indent + 2) + "node {")
+            # Find the node type
+            edge_type = next((f for f in type_def['fields'] if f['name'] == 'edges'), None)
+            if edge_type:
+                edge_base = self.get_base_type(edge_type['type'])
+                if edge_base and edge_base.endswith('Edge'):
+                    edge_def = self.types_by_name.get(edge_base)
+                    if edge_def:
+                        node_field = next((f for f in edge_def.get('fields', []) if f['name'] == 'node'), None)
+                        if node_field:
+                            node_type = self.get_base_type(node_field['type'])
+                            self._generate_selection(node_type, depth - 1, indent + 4)
+            print(" " * (indent + 2) + "}")
+            print(" " * indent + "}")
+            print(" " * indent + "pageInfo {")
+            print(" " * (indent + 2) + "hasNextPage")
+            print(" " * (indent + 2) + "hasPreviousPage")
+            print(" " * indent + "}")
+            print(" " * indent + "totalCount")
+            return
+        
+        # Regular types - select scalar/enum fields first
+        scalar_fields = []
+        object_fields = []
+        
+        for field in type_def['fields']:
+            field_type = field['type']
+            base_type = self.get_base_type(field_type)
+            
+            if not base_type or base_type not in self.types_by_name:
+                # It's a scalar
+                scalar_fields.append(field)
+            else:
+                base_def = self.types_by_name[base_type]
+                if base_def['kind'] in ['SCALAR', 'ENUM']:
+                    scalar_fields.append(field)
+                else:
+                    object_fields.append(field)
+        
+        # Print scalar fields first (up to 10)
+        for field in scalar_fields[:10]:
+            print(" " * indent + field['name'])
+        
+        # Then print object fields if we have depth
+        if depth > 1:
+            for field in object_fields[:5]:  # Limit object fields
+                field_type = field['type']
+                base_type = self.get_base_type(field_type)
+                
+                if base_type and base_type in self.types_by_name:
+                    print(" " * indent + field['name'] + " {")
+                    self._generate_selection(base_type, depth - 1, indent + 2)
+                    print(" " * indent + "}")
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description='GraphQL Schema Explorer CLI',
+        epilog='Examples:\n'
+               '  gql queries                     # List all queries\n'
+               '  gql queries --pattern product   # List queries with "product"\n'
+               '  gql type Product                # Show Product type details\n'
+               '  gql search category             # Search for "category"\n'
+               '  gql field Product.name          # Show field details\n'
+               '  gql generate products           # Generate sample query',
+        formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    
+    subparsers = parser.add_subparsers(dest='command', help='Commands')
+    
+    # List queries
+    queries_parser = subparsers.add_parser('queries', help='List available queries')
+    queries_parser.add_argument('-p', '--pattern', help='Filter by pattern')
+    queries_parser.add_argument('-a', '--args', action='store_true', 
+                               help='Show arguments')
+    
+    # List mutations
+    mutations_parser = subparsers.add_parser('mutations', help='List available mutations')
+    mutations_parser.add_argument('-p', '--pattern', help='Filter by pattern')
+    mutations_parser.add_argument('-a', '--args', action='store_true',
+                                 help='Show arguments')
+    
+    # List types
+    types_parser = subparsers.add_parser('types', help='List types')
+    types_parser.add_argument('-k', '--kind', 
+                             choices=['object', 'enum', 'scalar', 'input_object'],
+                             help='Filter by kind')
+    types_parser.add_argument('-p', '--pattern', help='Filter by pattern')
+    
+    # Show type details
+    type_parser = subparsers.add_parser('type', help='Show type details')
+    type_parser.add_argument('name', help='Type name')
+    type_parser.add_argument('-a', '--all', action='store_true',
+                            help='Show all fields')
+    
+    # Show field details
+    field_parser = subparsers.add_parser('field', help='Show field details')
+    field_parser.add_argument('path', help='Field path (Type.field)')
+    
+    # Search
+    search_parser = subparsers.add_parser('search', help='Search schema')
+    search_parser.add_argument('term', help='Search term')
+    search_parser.add_argument('--no-types', action='store_true',
+                              help='Exclude type names from search')
+    search_parser.add_argument('--no-fields', action='store_true',
+                              help='Exclude field names from search')
+    search_parser.add_argument('-d', '--descriptions', action='store_true',
+                              help='Include descriptions in search')
+    
+    # Generate query
+    gen_parser = subparsers.add_parser('generate', help='Generate sample query')
+    gen_parser.add_argument('query', help='Query name')
+    gen_parser.add_argument('-d', '--depth', type=int, default=2,
+                           help='Selection depth (default: 2)')
+    
+    # Parse arguments
+    args = parser.parse_args()
+    
+    if not args.command:
+        parser.print_help()
+        sys.exit(1)
+    
+    # Create explorer
+    explorer = SchemaExplorer()
+    
+    # Execute command
+    if args.command == 'queries':
+        explorer.list_queries(args.pattern, args.args)
+    elif args.command == 'mutations':
+        explorer.list_mutations(args.pattern, args.args)
+    elif args.command == 'types':
+        explorer.list_types(args.kind, args.pattern)
+    elif args.command == 'type':
+        explorer.show_type(args.name, args.all)
+    elif args.command == 'field':
+        explorer.show_field(args.path)
+    elif args.command == 'search':
+        explorer.search(args.term, 
+                       not args.no_types,
+                       not args.no_fields,
+                       args.descriptions)
+    elif args.command == 'generate':
+        explorer.generate_query(args.query, args.depth)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,86 @@
+[
+    {
+      "produtoId": 71465,
+      "parentId": 87909,
+      "produtoVarianteId": 266304,
+      "sku": "146300"
+    },
+    {
+      "produtoId": 71465,
+      "parentId": 87909,
+      "produtoVarianteId": 266305,
+      "sku": "146299"
+    },
+    {
+      "produtoId": 71465,
+      "parentId": 87909,
+      "produtoVarianteId": 266306,
+      "sku": "146298"
+    },
+    {
+      "produtoId": 71465,
+      "parentId": 87909,
+      "produtoVarianteId": 266307,
+      "sku": "146301"
+    },
+    {
+      "produtoId": 71465,
+      "parentId": 87909,
+      "produtoVarianteId": 266308,
+      "sku": "146297"
+    },
+    {
+      "produtoId": 71465,
+      "parentId": 87909,
+      "produtoVarianteId": 266309,
+      "sku": "146302"
+    },
+    {
+      "produtoId": 71465,
+      "parentId": 87909,
+      "produtoVarianteId": 266310,
+      "sku": "146303"
+    },
+    {
+      "produtoId": 71466,
+      "parentId": 87909,
+      "produtoVarianteId": 266311,
+      "sku": "146293"
+    },
+    {
+      "produtoId": 71466,
+      "parentId": 87909,
+      "produtoVarianteId": 266312,
+      "sku": "146292"
+    },
+    {
+      "produtoId": 71466,
+      "parentId": 87909,
+      "produtoVarianteId": 266313,
+      "sku": "146291"
+    },
+    {
+      "produtoId": 71466,
+      "parentId": 87909,
+      "produtoVarianteId": 266314,
+      "sku": "146294"
+    },
+    {
+      "produtoId": 71466,
+      "parentId": 87909,
+      "produtoVarianteId": 266315,
+      "sku": "146290"
+    },
+    {
+      "produtoId": 71466,
+      "parentId": 87909,
+      "produtoVarianteId": 266316,
+      "sku": "146295"
+    },
+    {
+      "produtoId": 71466,
+      "parentId": 87909,
+      "produtoVarianteId": 266317,
+      "sku": "146296"
+    }
+  ]
